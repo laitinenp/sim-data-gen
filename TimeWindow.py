@@ -15,7 +15,10 @@ class TimeWindow:
     def put(self, row, col, value):
         self.data[(self.index+row)%self.rows][col] = value
 
-    def move():
+    def move(self):
         self.index = self.index + 1
         if self.index == self.rows :
             self.index = 0
+        # clear the data under the new, current index
+        for i in range(self.cols):
+            self.data[self.index][i] = None
