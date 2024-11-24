@@ -1,5 +1,4 @@
 {
-    "rows": 35040,
-    "cols": 3,
-    "numberOfSimulationSteps": 10000
+    "rows": 5,
+    "numberOfSimulationSteps": 10
 }

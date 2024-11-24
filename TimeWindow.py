@@ -1,24 +1,27 @@
-import json
+import datetime as dt
 
+import State
 class TimeWindow:
 
-    def __init__(self, rows, cols):
+    def __init__(self, rows, timestep):
         self.index = 0
         self.rows = rows
-        self.cols = cols
-        self.data = [[0]*cols]*rows
+        self.timestep = timestep
+        timestamp = dt.datetime.now
+        self.data = [State.State(timestamp) for i in range(rows)]
 
-    def get(self, row, col):
-        return self.data[row][col]
+    def get(self, row):
+        return self.data[row]
+    
+    def getRows(self):
+        return self.rows
     
     # row is relational, starting from index
-    def put(self, row, col, value):
-        self.data[(self.index+row)%self.rows][col] = value
+    def put(self, row, value):
+        self.data[(self.index+row)%self.rows] = value
 
     def move(self):
+        self.data[self.index] = State.State(dt.datetime.now)
         self.index = self.index + 1
         if self.index == self.rows :
             self.index = 0
-        # clear the data under the new, current index
-        for i in range(self.cols):
-            self.data[self.index][i] = None
