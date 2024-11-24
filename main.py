@@ -8,7 +8,10 @@ window = TimeWindow(config.rows, config.cols)
 
 # Defining main function
 def main():
-    for i in range(config.rows):
+    for i in range(config.numberOfSimulationSteps):
+        # TODO - The simulation operations here
+
+        # and then proceed to the next step
         window.move()
 
 # Using the special variable 
