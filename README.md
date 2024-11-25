@@ -14,13 +14,18 @@ python main.py
 
 # editing
 Modify the code, e.g. using the VS Code
+
 code .
 
 # publish your changes into the repository
 First check, if someone has made changes to the repository
+
 git pull
 
 Publish:
+
 git add .
+
 git commit -m "<notes regarding your edits>"
+
 git push
