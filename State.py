@@ -17,9 +17,9 @@ class State:
     def __init__(self, timestamp):
 
         self.timestamp = timestamp
-        # Initialize all state data
+        # TODO: Initialize all state data
         self.consumption = 0
-        # etc. all the parameters
+        # etc. all the simulation parameters for time/timestamp
 
         # TODO: add your all fieldnames here for managing the writing to a csv file:
         self.fieldnames = ['timestamp', 'consumption']
