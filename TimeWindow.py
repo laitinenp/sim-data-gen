@@ -25,3 +25,4 @@ class TimeWindow:
         self.index = self.index + 1
         if self.index == self.rows :
             self.index = 0
+            
