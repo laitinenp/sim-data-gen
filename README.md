@@ -26,6 +26,6 @@ Publish:
 
 git add .
 
-git commit -m "<notes regarding your edits>"
+git commit -m "notes regarding your edits"
 
 git push
