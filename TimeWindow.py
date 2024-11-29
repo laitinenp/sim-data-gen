@@ -13,10 +13,13 @@ class TimeWindow:
             timestamp = timestamp + timestep
 
     def get(self, row):
-        return self.data[self.index + row]
+        return self.data[(self.index + row) % self.rows]
     
     def getRows(self):
         return self.rows
+    
+    def getTimestep(self):
+        return self.timestep
     
     # row is relational, starting from index
     def put(self, row, value):
