@@ -1,4 +1,5 @@
 {
+    "startFrom": 1,
     "rows": 5,
     "numberOfSimulationSteps": 10
 }

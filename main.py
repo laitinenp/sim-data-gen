@@ -2,12 +2,15 @@
 # main() function
 import json
 import random
-import datetime as dt
+import datetime
 import TimeWindow
 
 config = json.load(open('config.json'))
 print(config)
-window = TimeWindow.TimeWindow(config['rows'], dt.datetime.now)
+window = TimeWindow.TimeWindow(
+    config['rows'],
+    datetime.datetime(2025, 1, 1),      # start from
+    datetime.timedelta(minutes=15))     # timestep 15 minutes
 
 # Defining main function
 def main():

@@ -3,11 +3,11 @@ import datetime as dt
 import State
 class TimeWindow:
 
-    def __init__(self, rows, timestep):
+    def __init__(self, rows, timestamp, timestep):
         self.index = 0
         self.rows = rows
         self.timestep = timestep
-        timestamp = dt.datetime.now
+        self.timestamp = timestamp
         self.data = [State.State(timestamp) for i in range(rows)]
 
     def get(self, row):
@@ -21,7 +21,8 @@ class TimeWindow:
         self.data[(self.index+row)%self.rows] = value
 
     def move(self):
-        self.data[self.index] = State.State(dt.datetime.now)
+        self.data[self.index] = State.State(self.timestamp + self.timestep)
+        self.timestamp = self.timestamp + self.timestep
         self.index = self.index + 1
         if self.index == self.rows :
             self.index = 0

@@ -32,6 +32,7 @@ class State:
 
     def writeLineToCsvFile( self, filename ):
         with open(filename, 'a', newline='') as csvfile:
-            # TODO: solve how to print object's different field types, dates, etc.
-            writer = csv.DictWriter(csvfile, fieldnames=self.fieldnames, extrasaction='ignore')
-            writer.writerow(self.__dict__)
+            # TODO: write all the model attributes needed
+            print(self.timestamp.isoformat(),       file=csvfile, end=', ')
+            print(self.consumption,                 file=csvfile, end='\n')
+
