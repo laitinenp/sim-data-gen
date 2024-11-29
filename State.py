@@ -2,16 +2,6 @@ import csv
 import json
 import datetime
 
-class DatetimeEncoder(json.JSONEncoder):
-    def default(self, obj):
-        try:
-            return super().default(obj)
-        except TypeError:
-            return str(obj)
-
-def default(o):
-    if isinstance(o, (datetime.date, datetime.datetime)):
-        return o.isoformat()
 class State:
 
     def __init__(self, timestamp):
