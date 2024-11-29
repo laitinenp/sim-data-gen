@@ -7,11 +7,13 @@ class TimeWindow:
         self.index = 0
         self.rows = rows
         self.timestep = timestep
-        self.timestamp = timestamp
-        self.data = [State.State(timestamp) for i in range(rows)]
+        self.data = []
+        for i in range(self.rows):
+            self.data.append(State.State(timestamp))
+            timestamp = timestamp + timestep
 
     def get(self, row):
-        return self.data[row]
+        return self.data[self.index + row]
     
     def getRows(self):
         return self.rows
@@ -21,8 +23,7 @@ class TimeWindow:
         self.data[(self.index+row)%self.rows] = value
 
     def move(self):
-        self.data[self.index] = State.State(self.timestamp + self.timestep)
-        self.timestamp = self.timestamp + self.timestep
+        self.data[self.index] = State.State(self.get(-1).timestamp + self.timestep)
         self.index = self.index + 1
         if self.index == self.rows :
             self.index = 0
