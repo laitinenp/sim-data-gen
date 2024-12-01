@@ -5,6 +5,11 @@ import random
 import datetime
 import TimeWindow
 
+PROB_CAR = 0.15
+PROB_TRUC = 0.05
+CHARGE_TIMESTEP_CAR = 3
+CHARGE_TIMESTEP_TRUCK = 4
+
 config = json.load(open('config.json'))
 print(config)
 window = TimeWindow.TimeWindow(
@@ -19,9 +24,28 @@ def main():
     window.get(0).writeHeadingToCsvFile('data.csv')
 
     for i in range(config['numberOfSimulationSteps']):
-        # TODO - The simulation operations here
         state = window.get(0)
-        state.consumption = 100 * random.random()
+
+        # TODO - The simulation operations here
+        carArrives = (random.random() < PROB_CAR)
+        if carArrives:
+            for i in range(10):
+                # is bay nr. i free for charging
+                if state.bays[i] == '0':
+                    # book also the following timesteps for charging
+                    for t in range(CHARGE_TIMESTEP_CAR):
+                        window.get(t).bays[i] = 'C'
+                    break
+
+        truckArrives = (random.random() < PROB_TRUC)
+        if truckArrives:
+            for i in range(10):
+                # is bay nr. i free for charging
+                if state.bays[i] == '0':
+                    # book also the following timesteps for charging
+                    for t in range(CHARGE_TIMESTEP_TRUCK):
+                        window.get(t).bays[i] = 'T'
+                    break
 
         # simulation step finished, print the line
         state.writeLineToCsvFile('data.csv')

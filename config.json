@@ -1,5 +1,4 @@
 {
-    "startFrom": 1,
-    "rows": 5,
-    "numberOfSimulationSteps": 10
+    "rows": 1000,
+    "numberOfSimulationSteps": 35040
 }
